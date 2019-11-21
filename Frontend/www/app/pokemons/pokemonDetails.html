@@ -1,0 +1,14 @@
+<ion-view ng-controller="pokemonDetailsController as vm">
+  <ion-content>
+    <div>
+      <img class="pokemons" ng-src="{{vm.pokemon.img}}" alt="vm.pokemon.name">
+      <h1>{{vm.pokemon.name}}</h1>
+      <button ng-if="vm.pokemon.typeId == 1" class="air">Air</button>
+      <button ng-if="vm.pokemon.typeId == 2" class="fire">Fire</button>
+      <button ng-if="vm.pokemon.typeId == 3" class="rock">Rock</button>
+      <button ng-if="vm.pokemon.typeId == 4" class="water">Water</button>
+      <p>{{vm.pokemon.description}}</p>
+      <button class="delete" ng-click="vm.deletePokemon()">Delete {{vm.pokemon.name}}</button>
+    </div>
+  </ion-content>
+</ion-view>

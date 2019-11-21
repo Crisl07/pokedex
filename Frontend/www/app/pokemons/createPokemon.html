@@ -1,0 +1,23 @@
+<ion-view ng-controller="postPokemonController as vm">
+  <ion-content>
+    <h1>Create A New Pokemon!</h1>
+    <div>
+      Pokemon Name : <input required ng-model="vm.pokemon.name" /><br /><br />
+
+      Img Url : <input required ng-model="vm.pokemon.img" /><br /><br />
+
+      Description : <input required ng-model="vm.pokemon.description" /><br /><br />
+
+      <h3>Type:</h3>
+      <label for="Air">Air</label>
+      <input ng-model="vm.pokemon.typeId" type="radio" name="type" id="Air" value="Air"/><br />
+      <label for="Fire">Fire</label>
+      <input ng-model="vm.pokemon.typeId" type="radio" name="type" id="Fire" value="2" /><br />
+      <label for="Rock">Rock</label>
+      <input ng-model="vm.pokemon.typeId" type="radio" name="type" id="Rock" value="3" /><br />
+      <label for="Water">Water</label>
+      <input ng-model="vm.pokemon.typeId" type="radio" name="type" id="Water" value="4" /><br /><br />
+      <input type="button" class="delete" value="Create Pokemon" ng-click="vm.postData(vm.pokemon)" />
+    </div>
+  </ion-content>
+</ion-view>

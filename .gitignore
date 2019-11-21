@@ -1,0 +1,35 @@
+Backend/node_modules/
+Backend/config/
+Backend/database/
+Frontend/node_modules/
+Frontend/www/img/
+
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*~
+*.sw[mnpcod]
+.tmp
+*.tmp
+*.tmp.*
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
+
+*.log
+log.txt
+npm-debug.log*
+
+Frontend/.idea
+Frontend/.ionic
+Frontend/.sass-cache
+Frontend/.sourcemaps
+Frontend/.versions
+Frontend/.vscode
+Frontend/coverage
+Frontend/dist
+Frontend/platforms
+Frontend/plugins

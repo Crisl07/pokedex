@@ -1,0 +1,14 @@
+<ion-view ng-controller="allPokemonsController as vm">
+  <ion-content>
+    <h1>{{vm.date}}</h1>
+    <div ng-repeat="pokemon in vm.allPokemons">
+      <a class="item item-icon-right" ng-href="#/pokemon/{{pokemon.id}}">
+        <div>
+        <h2>{{pokemon.name}}</h2>
+          <img class="pokemons" ng-src="{{pokemon.img}}" alt="{{pokemon.name}}">
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>
+<!--  -->
