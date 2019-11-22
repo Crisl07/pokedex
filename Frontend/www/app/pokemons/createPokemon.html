@@ -4,44 +4,18 @@
     <div>
       Pokemon Name : <input required ng-model="vm.pokemon.name" placeholder="Enter pokemon"/><br /><br />
 
-      Url : <input required ng-model="vm.pokemon.img" placeholder="Enter image"/><br /><br />
+      Image Url : <input required ng-model="vm.pokemon.img" placeholder="Enter image"/><br /><br />
 
       Description :
       <input required ng-model="vm.pokemon.description" placeholder="Enter description"/><br /><br />
-
-      <h3>Type:</h3>
-      <label for="Air">Air</label>
-      <input
-        ng-model="vm.pokemon.typeId"
-        type="radio"
-        name="type"
-        id="Air"
-        value="1"
-      /><br />
-      <label for="Fire">Fire</label>
-      <input
-        ng-model="vm.pokemon.typeId"
-        type="radio"
-        name="type"
-        id="Fire"
-        value="2"
-      /><br />
-      <label for="Rock">Rock</label>
-      <input
-        ng-model="vm.pokemon.typeId"
-        type="radio"
-        name="type"
-        id="Rock"
-        value="3"
-      /><br />
-      <label for="Water">Water</label>
-      <input
-        ng-model="vm.pokemon.typeId"
-        type="radio"
-        name="type"
-        id="Water"
-        value="4"
-      /><br /><br />
+      
+      Type:
+      <select required ng-model="vm.pokemon.typeId">
+        <option value="1">Air</option>
+        <option value="2">Fire</option>
+        <option value="3">Rock</option>
+        <option value="4">Water</option>
+      </select> <br /><br />
       <input
         type="button"
         class="delete"

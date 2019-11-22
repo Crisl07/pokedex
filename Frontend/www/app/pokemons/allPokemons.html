@@ -1,15 +1,15 @@
 <ion-view ng-controller="allPokemonsController as vm">
   <ion-content scroll="false">
-      <ion-slides>
-        <ion-slide-page ng-repeat="pokemon in vm.allPokemons">
-          <a class="item item-icon-right" ng-href="#/pokemon/{{pokemon.id}}"> <br>
-            <h1>{{pokemon.name}}</h1>
-              <img
-                style="height:200px"
-                ng-src="{{pokemon.img}}"
-                alt="{{pokemon.name}}"
-                />
-        </ion-slide-page>
+      <ion-slides  options="options" slider="data.slider">
+          <ion-slide-page ng-repeat="pokemon in vm.allPokemons">
+            <a class="item item-icon-right" ng-href="#/pokemon/{{pokemon.id}}"> <br>
+              <h2>{{pokemon.name}}</h2>
+                <img
+                  style="width:200px"
+                  ng-src="{{pokemon.img}}"
+                  alt="{{pokemon.name}}"
+                  />
+          </ion-slide-page>
       </ion-slides>
     </ion-content>
 </ion-view>

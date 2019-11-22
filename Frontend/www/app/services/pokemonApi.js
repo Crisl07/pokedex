@@ -3,9 +3,9 @@
 
   angular
     .module("pokedexApp")
-    .factory("pokemonApi", ["$http", "$q", "$stateParams", pokemonApi]);
+    .factory("pokemonApi", ["$http", "$q", pokemonApi]);
 
-  function pokemonApi($http, $q, $stateParams) {
+  function pokemonApi($http, $q) {
     function getPokemons() {
       var defer = $q.defer();
       $http

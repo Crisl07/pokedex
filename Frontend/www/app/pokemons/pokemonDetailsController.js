@@ -19,6 +19,10 @@
   ) {
     var vm = this;
 
+    var reloadPage = () => {
+      location.reload();
+    };
+
     pokemonApi
       .getOnePokemon($stateParams.id)
       .then(data => {
@@ -32,16 +36,15 @@
       pokemonApi
         .deleteOnePokemon($stateParams.id)
         .then(data => {
-          $state.go("pokemons");
-          alert(data.status);
-          $timeout(location.reload());
+          alert("Pokemon was deleted!");
+          console.log(data);
         })
         .catch(err => {
-          $state.go("pokemons");
           alert("Something went wrong");
-          $timeout(location.reload());
           console.log("erroooor" + err);
         });
+      $state.go("pokemons");
+      $timeout(reloadPage, 1000);
     };
   }
 })();

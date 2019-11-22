@@ -3,9 +3,14 @@
 
   angular
     .module("pokedexApp")
-    .controller("postPokemonController", ["pokemonApi", "$state", postPokemonController]);
+    .controller("postPokemonController", [
+      "pokemonApi",
+      "$state",
+      "$timeout",
+      postPokemonController
+    ]);
 
-  function postPokemonController(pokemonApi, $state) {
+  function postPokemonController(pokemonApi, $state, $timeout) {
     var vm = this;
     vm.pokemon = {
       name: null,
@@ -15,18 +20,24 @@
       updatedAt: new Date(),
       typeId: null
     };
-    vm.postData = (pokemonAttributes) => {
-      console.log(pokemonAttributes);
+
+    var reloadPage = () => {
+      location.reload();
+    };
+
+    vm.postData = pokemonAttributes => {
       pokemonApi
         .postPokemon(pokemonAttributes)
         .then(data => {
+          alert("Pokemon was created successfully");
           console.log(data);
         })
         .catch(err => {
+          alert("Something went wrong");
           console.log("erroooor" + err);
         });
-        $state.go("pokemons")
-        timeout(location.reload(), 2000)
+      $state.go("pokemons");
+      $timeout(reloadPage, 1000);
     };
   }
 })();

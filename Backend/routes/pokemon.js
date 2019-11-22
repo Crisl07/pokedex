@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const pokemon = require("../models/pokemon").route;
-const type = require("../models/type").route;
-const db = require("../database/db");
 
 router.get("/pokemons", (req, res) => {
   pokemon
@@ -13,7 +11,7 @@ router.get("/pokemons", (req, res) => {
       res.json(pokemons);
     })
     .catch(err => {
-      res.send("error: " + err);
+      res.status(400).send("error: " + err);
     });
 });
 
@@ -29,7 +27,7 @@ router.get("/pokemons/:typeId", (req, res) => {
       res.json(pokemons);
     })
     .catch(err => {
-      res.send("error: " + err);
+      res.status(400).send("error: " + err);
     });
 });
 
@@ -44,28 +42,23 @@ router.get("/pokemon/:id", (req, res) => {
       if (pokemon) {
         res.json(pokemon);
       } else {
-        res.status(400);
+        res.status(404);
         res.json({ error: "Pokemon does not exist" });
       }
     })
     .catch(err => {
-      res.send("error: " + err);
+      res.status(400).send("error: " + err);
     });
 });
 
 router.post("/pokemon", (req, res) => {
-  for (let field in req.body) {
-    if (!field) {
-      res.status(400).send("All fiels are required");
-    }
-  }
   pokemon
     .create(req.body)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
-      res.send("error: " + err);
+      res.status(400).send("error: " + err);
     });
 });
 
@@ -77,10 +70,10 @@ router.delete("/pokemon/:id", (req, res) => {
       }
     })
     .then(() => {
-      res.json({ status: "Pokemon Deleted!" });
+      res.send("Pokemon Deleted!");
     })
     .catch(err => {
-      res.send("error: " + err);
+      res.status(400).send("error: " + err);
     });
 });
 
