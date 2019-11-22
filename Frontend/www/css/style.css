@@ -51,10 +51,6 @@
   .header-right {
     float: none;
   }
-  .pokemons {
-    float: none;
-    display: block;
-  }
 }
 
 .delete {

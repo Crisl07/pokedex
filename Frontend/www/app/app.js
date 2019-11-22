@@ -41,7 +41,7 @@ angular
       .state("createpokemon", {
         url: "/createpokemon",
         templateUrl: "app/pokemons/createPokemon.html"
-      })
+      });
 
     $urlRouterProvider.otherwise("/pokemons");
   });

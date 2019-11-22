@@ -8,12 +8,13 @@
   function allPokemonsController(pokemonApi) {
     var vm = this;
 
-    pokemonApi.getPokemons()
-    .then(data => {
-      vm.allPokemons = data;
-    })
-    .catch(err => {
-      console.log('errooor' + err);
-    });
+    pokemonApi
+      .getPokemons()
+      .then(data => {
+        vm.allPokemons = data;
+      })
+      .catch(err => {
+        console.log("errooor" + err);
+      });
   }
 })();

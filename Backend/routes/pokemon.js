@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const pokemon = require("../models/pokemon").route;
-const type = require('../models/type').route;
+const type = require("../models/type").route;
+const db = require("../database/db");
 
 router.get("/pokemons", (req, res) => {
   pokemon
@@ -37,7 +38,7 @@ router.get("/pokemon/:id", (req, res) => {
     .findOne({
       where: {
         id: req.params.id
-      },
+      }
     })
     .then(pokemon => {
       if (pokemon) {

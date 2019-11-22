@@ -20,13 +20,13 @@
       pokemonApi
         .postPokemon(pokemonAttributes)
         .then(data => {
-          $state.go("pokemons");
           console.log(data);
         })
         .catch(err => {
-          $state.go("pokemons");
           console.log("erroooor" + err);
         });
+        $state.go("pokemons")
+        timeout(location.reload(), 2000)
     };
   }
 })();

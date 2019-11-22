@@ -7,16 +7,21 @@
       "pokemonApi",
       "$stateParams",
       "$state",
+      "$timeout",
       pokemonDetailsController
     ]);
 
-  function pokemonDetailsController(pokemonApi, $stateParams, $state) {
+  function pokemonDetailsController(
+    pokemonApi,
+    $stateParams,
+    $state,
+    $timeout
+  ) {
     var vm = this;
 
     pokemonApi
       .getOnePokemon($stateParams.id)
       .then(data => {
-        console.log(data);
         vm.pokemon = data;
       })
       .catch(err => {
@@ -29,9 +34,12 @@
         .then(data => {
           $state.go("pokemons");
           alert(data.status);
+          $timeout(location.reload());
         })
         .catch(err => {
           $state.go("pokemons");
+          alert("Something went wrong");
+          $timeout(location.reload());
           console.log("erroooor" + err);
         });
     };

@@ -71,7 +71,6 @@
         .delete("http://localhost:5000/api/pokemon/" + id)
         .success(data => {
           defer.resolve(data);
-          console.log("Data Deleted Successfully");
         })
         .error(() => {
           console.log("errooor");

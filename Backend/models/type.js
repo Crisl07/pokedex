@@ -15,7 +15,7 @@ module.exports = {
     type.associate = function(models) {
       type.hasMany(models.pokemon, {
         foreignKey: "typeId",
-        as: "types",
+        as: "types"
       });
     };
     return type;
