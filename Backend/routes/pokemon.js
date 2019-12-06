@@ -11,7 +11,7 @@ router.get("/pokemons", (req, res) => {
       res.json(pokemons);
     })
     .catch(err => {
-      res.status(400).send("error: " + err);
+      res.status(500).send("error: " + err);
     });
 });
 
@@ -27,7 +27,7 @@ router.get("/pokemons/:typeId", (req, res) => {
       res.json(pokemons);
     })
     .catch(err => {
-      res.status(400).send("error: " + err);
+      res.status(500).send("error: " + err);
     });
 });
 
@@ -47,7 +47,7 @@ router.get("/pokemon/:id", (req, res) => {
       }
     })
     .catch(err => {
-      res.status(400).send("error: " + err);
+      res.status(500).send("error: " + err);
     });
 });
 
@@ -58,7 +58,7 @@ router.post("/pokemon", (req, res) => {
       res.send(data);
     })
     .catch(err => {
-      res.status(400).send("error: " + err);
+      res.status(500).send("error: " + err);
     });
 });
 
@@ -73,7 +73,7 @@ router.delete("/pokemon/:id", (req, res) => {
       res.send("Pokemon Deleted!");
     })
     .catch(err => {
-      res.status(400).send("error: " + err);
+      res.status(500).send("error: " + err);
     });
 });
 
