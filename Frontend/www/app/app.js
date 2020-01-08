@@ -1,8 +1,11 @@
+var token;
+var refreshToken;
+
 angular
   .module("pokedexApp", ["ionic"])
 
   .run($ionicPlatform => {
-    $ionicPlatform.ready(function() {
+    $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs).
       // The reason we default this to hidden is that native apps don't usually show an accessory bar, at
@@ -21,8 +24,23 @@ angular
     });
   })
 
-  .config(($stateProvider, $urlRouterProvider) => {
+  .factory("httpRequestInterceptor", httpRequestInterceptor)
+
+  .config(($stateProvider, $urlRouterProvider, $httpProvider) => {
+
+    $httpProvider.interceptors.push('httpRequestInterceptor');
+
     $stateProvider
+      .state("signIn", {
+        url: "/signin",
+        templateUrl: "app/user/signIn.html"
+      })
+
+      .state("signUp", {
+        url: "/signup",
+        templateUrl: "app/user/signUp.html"
+      })
+
       .state("pokemons", {
         url: "/pokemons",
         templateUrl: "app/pokemons/allPokemons.html"
@@ -41,7 +59,38 @@ angular
       .state("createpokemon", {
         url: "/createpokemon",
         templateUrl: "app/pokemons/createPokemon.html"
-      });
+      })
 
-    $urlRouterProvider.otherwise("/pokemons");
+    $urlRouterProvider.otherwise(function ($injector) {
+      var httpService = $injector.get('$http');
+      var stateService = $injector.get('$state');
+      refreshToken = window.localStorage.getItem("jid");
+
+      httpService
+        .post("http://localhost:5000/user/refresh_token", { refreshToken })
+        .then(function (data) {
+          window.localStorage.setItem("jid", data.data.refreshToken)
+          token = data.data.accessToken;
+          if (token) {
+            stateService.go("pokemons");
+          } else {
+            stateService.go("signIn");
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
+    });
   });
+
+httpRequestInterceptor.$inject = [];
+
+function httpRequestInterceptor() {
+  return {
+    request: function (config) {
+
+      config.headers['Authorization'] = token;
+      return config;
+    }
+  }
+}

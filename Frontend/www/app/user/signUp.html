@@ -1,0 +1,25 @@
+<ion-view ng-controller="signUpController as vm">
+  <ion-content>
+    <h1>Sign Up!</h1>
+    <div class="input">
+        {{ vm.user.userName }}
+        {{ vm.user.email }}
+        {{ vm.user.password }}
+      Username: <input required ng-model="vm.user.name" placeholder="Enter name"/><br /><br />
+      
+      Email: <input type="email" required ng-model="vm.user.email" placeholder="Enter email"/><br /><br />
+
+      Password: <input type="password" required ng-model="vm.user.password" placeholder="Enter password"/><br /><br />
+      
+      <input
+        type="button"
+        class="delete"
+        value="Sign up"
+        ng-click="vm.postUser(vm.user)"
+      />
+
+
+
+    </div>
+  </ion-content>
+</ion-view>

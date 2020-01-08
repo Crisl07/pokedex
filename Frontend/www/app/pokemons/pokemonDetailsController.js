@@ -37,14 +37,15 @@
         .deleteOnePokemon($stateParams.id)
         .then(data => {
           alert("Pokemon was deleted!");
+          $state.go("pokemons");
+          $timeout(reloadPage, 1000);
           console.log(data);
         })
         .catch(err => {
           alert("Something went wrong");
           console.log("erroooor" + err);
         });
-      $state.go("pokemons");
-      $timeout(reloadPage, 1000);
+
     };
   }
 })();

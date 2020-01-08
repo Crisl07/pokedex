@@ -1,6 +1,11 @@
 const express = require("express");
-const router = express.Router();
 const pokemon = require("../models/pokemon").route;
+const {
+  authenticateUser,
+  verifyRole
+} = require("../middlewares/authentication");
+
+const router = express.Router();
 
 router.get("/pokemons", (req, res) => {
   pokemon
@@ -31,7 +36,7 @@ router.get("/pokemons/:typeId", (req, res) => {
     });
 });
 
-router.get("/pokemon/:id", (req, res) => {
+router.get("/pokemon/:id", [authenticateUser, verifyRole], (req, res) => {
   pokemon
     .findOne({
       where: {
